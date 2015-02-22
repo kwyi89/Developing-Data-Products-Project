@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Why Reactive Iris Plot?</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Why Reactive Iris Plot?">
+  <meta name="author" content="kwyi89">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Why Reactive Iris Plot?</h1>
+    <h2></h2>
+    <p>kwyi89<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Application Description</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The application illustrates the discriminant analysis using any of the two variables as x-axis and y-axis and draws the linear regression line for modeling the relationship between one dependent variable and one explanatory variable. You may look at the relationship for all three species of iris by checking each type on the side panel. </p>
+
+<p>The application can be accessed at the following URL:
+<a href="https://kwyi89.shinyapps.io/reactive-iris-plot/">https://kwyi89.shinyapps.io/reactive-iris-plot/</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>What data set does it use?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>This application is using the famous iris flower data set. In order to understand the discriminant analysis, which is a method used in machine learning, pattern recognition, and statistics to find a linear combination of features that separates two or more classes of objects, this data set has been the most common data set for many classification techniques in machine learning. </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Application Widgets</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>This shiny application includes 3 widgets:</p>
+
+<ol>
+<li>checkboxGroupInput: A group of check boxes for picking the species</li>
+<li>Actionbutton: a reactive action button to draw the linear regression line</li>
+<li>RadioButtons: two sets of radio button for picking the dependent variable on x-axis and the explanatory variable on y-axis. </li>
+</ol>
+
+<p>Next slide shows a plot that uses setosa&#39;s Sepal.Length and Sepal.Width as variables. However, the application will draw any plots with user&#39;s inputs.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>An example of the application</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">library(ggplot2)
+data(iris)
+    sp &lt;- iris[iris$Species ==&quot;setosa&quot;,]    
+    g &lt;- ggplot(sp, aes(x= Sepal.Length, y= Sepal.Width)) +
+        geom_point(data = sp, aes(shape = factor(Species), colour=Species)) +  
+        facet_grid(Species ~ .)    
+    print(g)
+</code></pre>
+
+<h2><img src="assets/fig/unnamed-chunk-1-1.png" alt="plot of chunk unnamed-chunk-1"> </h2>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Application Description'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='What data set does it use?'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Application Widgets'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='An example of the application'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
